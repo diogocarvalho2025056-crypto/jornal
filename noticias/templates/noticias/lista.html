@@ -1,0 +1,34 @@
+<h1>Artigos</h1>
+
+<ul>
+  {% for artigo in artigos %}
+    <li>
+      <a href="/artigo/{{ artigo.id }}/">
+        {{ artigo.titulo }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+<h1>{{ artigo.titulo }}</h1>
+
+<p>{{ artigo.corpo }}</p>
+
+<a href="/artigo/{{ artigo.id }}/comentarios/">
+  Ver comentários
+</a>
+
+
+<h1>Comentários - {{ artigo.titulo }}</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <textarea name="texto"></textarea><br>
+  <button type="submit">Comentar</button>
+</form>
+
+<ul>
+  {% for comentario in comentarios %}
+    <li>{{ comentario.texto }}</li>
+  {% endfor %}
+</ul>
